@@ -8,8 +8,9 @@
 #ifndef RCC_CONFIG_H_
 #define RCC_CONFIG_H_
 
-
+#include "RCC_priv.h"
 //		For Pre-build configurations
+
 
 
 /****OPTIONS FOR CLK TYPE IN RCC:

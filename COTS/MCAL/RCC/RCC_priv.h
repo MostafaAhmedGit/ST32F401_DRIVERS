@@ -13,32 +13,28 @@
 
 
 
- /* 		CLOCK TYPES			*/
+// /* 		CLOCK TYPES			*/
+//
+//#define RCC_HSE_CRYSTAL		0
+//#define RCC_HSE_RC			1
+//#define RCC_HSI				2
+//#define RCC_PLL				3
 
-typedef enum
-{
-	RCC_HSE_CRYSTAL = 0,
-	RCC_HSE_RC,	//1
-	RCC_HSI,				//2
-	RCC_PLL	// 3
-}RCC_CLOCK_TYPES_t;
+
+
+
+
+
 
 /*			PLL OPTIONS			*/
-typedef enum
-{
-	RCC_PLL_IN_HSI_DIV_2,
-	RCC_PLL_IN_HSE_DIV_2,
-	RCC_PLL_IN_HSE
 
-}RCC_PLL_OPTIONS_t;
-
-typedef enum
-{
-	RCC_CLOCK_STATE_ON,
-	RCC_CLOCK_STATE_OFF,
-}RCC_CLOCK_STATUS_t;
+#define RCC_PLL_HSI_DIV2	0
+#define RCC_PLL_HSE_DIV2    1
+#define RCC_PLL_HSE    		2
 
 
+#define RCC_CLK__STATE_ON	0
+#define RCC_CLK__STATE_OFF	1
 
 
 /*							Addresses and OFFSETS							*/
@@ -84,6 +80,7 @@ typedef enum
 #define RCC_APB1RSTR		*((volatile u32*) RCC_BASE+RCC_APB1RSTR_OFFSET)
 #define RCC_CSR				*((volatile u32*) RCC_BASE+RCC_CSR_OFFSET)
 #define RCC_BDCR			*((volatile u32*) RCC_BASE+RCC_BDCR_OFFSET)
+
 #define RCC_AHB1ENR			*((volatile u32*) RCC_BASE+RCC_AHB1ENR_OFFSET)
 #define RCC_AHB2ENR			*((volatile u32*) RCC_BASE+RCC_AHB2ENR_OFFSET)
 
