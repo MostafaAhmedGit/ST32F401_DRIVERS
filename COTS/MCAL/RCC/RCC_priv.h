@@ -42,7 +42,7 @@
 #define RCC_BASE				0x40023800	//RCC BASE ADDRESS
 #define RCC_CR_OFFSET			0			//RCC clock configuration register
 #define RCC_PLL_CFGR_OFFSET		4			//RCC PLL configuration register
-#define RCC_CFGR_OFFSET			8			//RCC clock configuration register
+#define RCC_CFGR_OFFSET			0x8			//RCC clock configuration register
 #define RCC_CIR_OFFSET			C			//RCC clock interrupt register
 
 #define RCC_AHB1RSTR_OFFSET		10			//RCC AHB1 peripheral reset register
@@ -71,7 +71,7 @@
 
 
 #define RCC_CR				*((volatile u32*) RCC_BASE+RCC_CR_OFFSET)
-#define RCC_CFGR			*((volatile u32*) RCC_BASE+RCC_CFGR_OFFSET)
+#define RCC_CFGR			*((volatile u32*)0x40023808)
 
 #define RCC_PLL_CFGR		*((volatile u32*) RCC_BASE+RCC_PLL_CFGR_OFFSET)
 #define RCC_CIR				*((volatile u32*) RCC_BASE+RCC_CIR_OFFSET)

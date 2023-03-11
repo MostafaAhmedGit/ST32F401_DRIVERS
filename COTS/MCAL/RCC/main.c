@@ -60,9 +60,14 @@ main(int argc, char* argv[])
 
 //	RCC_enuControlPeripheralAHB1(RCC_enuON,);
 
+
+
   // Infinite loop
   while (1)
     {
+		RCC_enuEnablePLL();
+		//RCC_PLL_Config();
+		RCC_enuEnableSystemCLK(RCC_PLL);
        // Add your code here.
     }
 }

@@ -8,6 +8,7 @@
 #include "RCC_priv.h"
 #include "Stdtypes.h"
 #include "RCC_config.h"
+#include "Bitmath.h"
 
 #define HSE_Enable_Mask	  0x00090000	// Enables the HSE + Enable CSS + Enable OSC bypass
 #define HSE_Ready_Check   0x00020000	// Mask to check if the HSE is ready or not ?
@@ -232,6 +233,8 @@ RCC_enuErrorStatus_t RCC_enuEnablePLL(void)
 
 	if(Local_timer==0)
 		Status = RCC_enuNOK;
+
+	RCC_CR = Local_u32RegisterHold;
 
 
 	return Status;
@@ -515,13 +518,22 @@ RCC_enuErrorStatus_t RCC_enuEnableSystemCLK(RCC_enuClocks Cpy_enuRCC_CLK)
 
 
 	Local_u32RegisterHold&=SW_CLR;			// Clears the SW bits that determine the System CLK
-
+//
 	switch(Cpy_enuRCC_CLK)
 	{
-	case RCC_HSI:			Local_u32RegisterHold |= SW_SET_HSI;	break;
-	case RCC_HSE:			Local_u32RegisterHold |= SW_SET_HSI;	break;
-	case RCC_PLL:			Local_u32RegisterHold |= SW_SET_PLL;	break;
+	case RCC_HSI:Local_u32RegisterHold |= SW_SET_HSI;break;
+
+
+	case RCC_HSE:(Local_u32RegisterHold)|=SW_SET_HSE;break;
+
+
+	case RCC_PLL:Local_u32RegisterHold |= SW_SET_PLL;	break;
 	}
+
+
+//	SET_BIT(Local_u32RegisterHold,0);
+//	CLR_BIT(Local_u32RegisterHold,1);
+	RCC_CFGR = Local_u32RegisterHold;
 
 	return Status;
 }
